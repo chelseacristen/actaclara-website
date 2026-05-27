@@ -105,11 +105,12 @@ export default function ContactForm({ onClose }: { onClose?: () => void }) {
       />
 
       <div>
-        <label htmlFor="cf-name" style={fieldStyle.label}>Name</label>
+        <label htmlFor="cf-name" style={fieldStyle.label}>Name<span aria-hidden="true" style={{ color: 'var(--brand-blue)', marginLeft: 4 }}>*</span></label>
         <input
           id="cf-name"
           type="text"
           required
+          aria-required="true"
           maxLength={120}
           value={name}
           onChange={(e) => {
@@ -127,11 +128,12 @@ export default function ContactForm({ onClose }: { onClose?: () => void }) {
       </div>
 
       <div>
-        <label htmlFor="cf-email" style={fieldStyle.label}>Email</label>
+        <label htmlFor="cf-email" style={fieldStyle.label}>Email<span aria-hidden="true" style={{ color: 'var(--brand-blue)', marginLeft: 4 }}>*</span></label>
         <input
           id="cf-email"
           type="email"
           required
+          aria-required="true"
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
