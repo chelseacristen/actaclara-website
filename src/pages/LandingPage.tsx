@@ -44,7 +44,7 @@ export default function LandingPage() {
           padding: '22px 52px',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, cursor: 'default', userSelect: 'none' }}>
           <ChevronLogo width={28} height={22} />
           <span
             style={{
@@ -75,7 +75,9 @@ export default function LandingPage() {
           textAlign: 'center',
         }}
       >
-        <ChevronLogo width={96} height={77} />
+        <div style={{ cursor: 'default', userSelect: 'none' }}>
+          <ChevronLogo width={96} height={77} />
+        </div>
 
         <h1
           style={{
@@ -86,6 +88,8 @@ export default function LandingPage() {
             letterSpacing: '0.05em',
             lineHeight: 1.05,
             color: 'var(--brand-mist)',
+            cursor: 'default',
+            userSelect: 'none',
           }}
         >
           Acta
@@ -104,6 +108,8 @@ export default function LandingPage() {
             letterSpacing: '0.40em',
             textTransform: 'uppercase',
             color: 'var(--brand-mist)',
+            cursor: 'default',
+            userSelect: 'none',
           }}
         >
           {/* Flip to "Quickly try it" via single string edit below if desired. */}
@@ -151,9 +157,7 @@ export default function LandingPage() {
           textTransform: 'uppercase',
           color: '#3a5070',
         }}
-      >
-        © 2026 ActaClara
-      </footer>
+      ></footer>
 
       <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
