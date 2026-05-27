@@ -1,0 +1,132 @@
+/* ============================================================
+   ActaClara Demo App -- Final Brand-Aligned Palette
+   Updated 2026-04-22 by Yuki Tanaka
+   Source of truth: ActaClaraBranding.html + demo_visual_design_spec_v1
+   ============================================================ */
+
+:root {
+  /* -- BRAND FOUNDATIONS (from ActaClaraBranding.html) -- */
+  --brand-ink:    #060d1f;
+  --brand-navy:   #0b1730;
+  --brand-steel:  #2a4878;
+  --brand-blue:   #2c5fcc;
+  --brand-sky:    #5b8eeb;
+  --brand-mist:   #c2d4f0;
+  --brand-warm:   #f7f4ee;
+  --brand-paper:  #f0eee8;
+
+  /* -- BACKGROUNDS (dark -> light) -- */
+  --bg-base:      #070e1c;
+  --bg-surface:   #0b1730;
+  --bg-raised:    #111d33;
+  --bg-input:     #040c1e;
+  --bg-overlay:   rgba(4, 8, 24, 0.85);
+
+  /* -- BORDERS -- */
+  --border-subtle:  #0d1e3a;
+  --border-default: #1a3060;
+  --border-hover:   #2a4878;
+  --border-active:  #2c5fcc;
+
+  /* -- TEXT -- */
+  --text-primary:   #e2ecff;
+  --text-secondary: #7a9acc;
+  --text-muted:     #4a6a9a;
+  --text-faint:     #3a5888;
+  --text-inverse:   #060d1f;
+
+  /* -- ACCENT (brand blue system) -- */
+  --accent-primary:       #2c5fcc;
+  --accent-primary-hover: #5b8eeb;
+  --accent-glow:          rgba(44, 95, 204, 0.15);
+  --accent-glow-strong:   rgba(44, 95, 204, 0.25);
+
+  /* -- DATA ENCODING -- */
+  --color-contributions:  #F59E0B;
+  --color-lobbying:       #8B5CF6;
+  --color-contracts:      #10B981;
+  --color-sec:            #EC4899;
+  --color-ownership:      #06B6D4;
+
+  /* -- POLITICAL PARTY -- */
+  --party-dem:  #3B82F6;
+  --party-rep:  #EF4444;
+  --party-ind:  #A78BFA;
+
+  /* -- RISK / STATUS -- */
+  --risk-high:       #EF4444;
+  --risk-medium:     #F59E0B;
+  --risk-low:        #10B981;
+  --risk-bg-high:    rgba(239, 68, 68, 0.08);
+  --risk-bg-medium:  rgba(245, 158, 11, 0.06);
+  --risk-bg-low:     rgba(16, 185, 129, 0.06);
+
+  /* -- VERDICT -- */
+  --verdict-pass-bg:     #0a2010;
+  --verdict-pass-text:   #3a8a5a;
+  --verdict-pass-border: #1a4a2a;
+  --verdict-warn-bg:     #1a1a08;
+  --verdict-warn-text:   #8a7a3a;
+  --verdict-warn-border: #3a3a18;
+  --verdict-fail-bg:     #200a0a;
+  --verdict-fail-text:   #8a3a3a;
+  --verdict-fail-border: #4a1a1a;
+
+  /* -- TYPOGRAPHY -- */
+  --font-display:   'Newsreader', Georgia, serif;
+  --font-label:     'Syne', 'Inter', system-ui, sans-serif;
+  --font-body:      'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono:      'DM Mono', 'Menlo', monospace;
+
+  /* -- SPACING (8px grid) -- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+
+  /* -- MOTION -- */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast:   150ms;
+  --duration-normal: 300ms;
+  --duration-slow:   500ms;
+  --duration-drama:  1200ms;
+
+  /* -- RADII -- */
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  /* -- SHADOWS -- */
+  --shadow-dropdown: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-card:     0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-glow:     0 0 0 3px var(--accent-glow);
+
+  /* -- DARK MONEY PAGE -- */
+  --dm-transparent:   var(--risk-low);
+  --dm-semi:          var(--risk-medium);
+  --dm-opaque:        var(--color-lobbying);
+  --dm-dark:          var(--risk-high);
+  --dm-flow-animate:  2s linear infinite;
+  --node-corporation: var(--brand-steel);
+  --node-501c4:       var(--risk-high);
+  --node-501c6:       var(--risk-medium);
+  --node-527:         var(--color-lobbying);
+  --node-pac:         var(--color-sec);
+  --node-candidate:   var(--party-dem);
+}
+
+/* -- GLOBAL KEYFRAMES --
+ * coverage-pulse: shared by CollectionRefreshingCallout + CoverageChip IN_COLLECTION state.
+ * Yuki wireframe §7.4 promotes the keyframe from CollectionRefreshingCallout
+ * to global so multiple components can reference it. Respects
+ * prefers-reduced-motion (caller gates the animation property).
+ */
+@keyframes coverage-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(56, 132, 255, 0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(56, 132, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 132, 255, 0); }
+}

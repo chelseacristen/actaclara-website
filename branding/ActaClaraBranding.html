@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ActaClara — A8 Chevron · Design Mark Exploration</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:   #060d1f;
+  --navy:  #0b1730;
+  --steel: #2a4878;
+  --blue:  #2c5fcc;
+  --sky:   #5b8eeb;
+  --mist:  #c2d4f0;
+  --warm:  #f7f4ee;
+  --paper: #f0eee8;
+}
+
+body {
+  background: #070e1c;
+  min-height: 100vh;
+  padding: 0 0 120px;
+  font-family: 'DM Mono', monospace;
+  color: var(--mist);
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: radial-gradient(rgba(44,95,204,0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none; z-index: 0;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  position: relative; z-index: 1;
+  border-bottom: 1px solid #0d1e3a;
+  padding: 22px 52px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.mh-l { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: #3a5888; }
+.mh-r { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #3a5070; font-style: italic; }
+
+/* ── ATTORNEY NOTICE ── */
+.notice {
+  position: relative; z-index: 1;
+  margin: 28px 52px 0;
+  border: 1px solid #1a3060;
+  border-left: 3px solid var(--blue);
+  border-radius: 2px;
+  background: #040c1e;
+  padding: 16px 22px;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.notice-label {
+  font-size: 8.5px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--sky); white-space: nowrap; margin-top: 1px;
+}
+.notice-text {
+  font-size: 8.5px; letter-spacing: 0.12em; color: #3a5888; line-height: 1.9;
+}
+.notice-text strong { color: #4a6aaa; font-weight: 400; }
+
+/* ── CHAPTER ── */
+.chapter {
+  position: relative; z-index: 1;
+  margin: 48px 52px 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #0d1e3a;
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.ch-name { font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: #4a6a9a; }
+.ch-sub  { font-size: 9px; letter-spacing: 0.2em; color: #3a5070; font-style: italic; }
+
+/* ── GRID ── */
+.grid {
+  position: relative; z-index: 1;
+  margin: 20px 52px 0;
+  display: grid; gap: 16px;
+}
+.g4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+.g3 { grid-template-columns: 1fr 1fr 1fr; }
+.g2 { grid-template-columns: 1fr 1fr; }
+
+/* ── CARD ── */
+.card {
+  border: 1px solid #0d1e3a;
+  border-radius: 2px;
+  background: var(--ink);
+  position: relative; overflow: hidden;
+  transition: border-color 0.3s;
+}
+.card:hover { border-color: #2a4878; }
+.card.hero  { border-color: #2a4878; }
+
+.card-tag {
+  position: absolute; top: 14px; left: 16px;
+  font-size: 8.5px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: #3a5888; z-index: 2;
+}
+.card-note {
+  position: absolute; bottom: 14px; left: 16px; right: 16px;
+  font-size: 8px; letter-spacing: 0.12em; color: #4a6a9a; line-height: 1.8; z-index: 2;
+}
+
+.card-inner {
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+}
+.col    { flex-direction: column; gap: 22px; min-height: 300px; padding: 52px 28px 50px; }
+.row    { flex-direction: row;    gap: 28px; min-height: 240px; padding: 52px 36px; }
+.center { flex-direction: column; gap: 0;    min-height: 180px; padding: 36px 28px; }
+
+/* ── WORDMARK ── */
+.wm-l1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 9px; font-weight: 400;
+  letter-spacing: 0.52em; text-transform: uppercase; color: #3a5888;
+}
+.wm-main {
+  font-family: 'Newsreader', serif;
+  font-size: 42px; font-weight: 400;
+  letter-spacing: 0.05em; color: #e2ecff;
+  line-height: 1.08; margin: 7px 0 6px;
+}
+.wm-main em { font-style: italic; color: var(--sky); font-weight: 300; }
+.wm-l3 {
+  font-family: 'DM Mono', monospace;
+  font-size: 7.5px; letter-spacing: 0.4em;
+  text-transform: uppercase; color: #3a5070;
+}
+.lg .wm-main { font-size: 56px; }
+.lg .wm-l1   { font-size: 10.5px; letter-spacing: 0.54em; }
+.lg .wm-l3   { font-size: 8.5px; letter-spacing: 0.44em; }
+.sm .wm-main { font-size: 26px; margin: 4px 0 3px; }
+.sm .wm-l1   { font-size: 7px; letter-spacing: 0.38em; }
+.sm .wm-l3   { font-size: 6px; letter-spacing: 0.3em; }
+
+/* light */
+.light { background: var(--warm); border-color: #d4cfc8; }
+.light .wm-main    { color: #060d1f; }
+.light .wm-main em { color: var(--blue); }
+.light .wm-l1      { color: #8090b0; }
+.light .wm-l3      { color: #9aa8c0; }
+.light .card-tag   { color: #9aaccc; }
+.light .card-note  { color: #8090b0; }
+
+/* ── SIZE STRIP ── */
+.size-strip {
+  position: relative; z-index: 1;
+  margin: 20px 52px 0;
+  border: 1px solid #0d1e3a;
+  border-radius: 2px;
+  background: var(--ink);
+  padding: 36px 48px;
+  display: flex; align-items: flex-start; gap: 0;
+}
+.sz {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 14px;
+  padding: 0 24px;
+  border-right: 1px solid #0d1e3a;
+}
+.sz:last-child { border-right: none; }
+.sz-label  { font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: #3a5070; }
+.sz-note   { font-size: 7.5px; letter-spacing: 0.1em; color: #2a3d60; text-align: center; line-height: 1.8; }
+.sz-verdict {
+  font-size: 7.5px; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 2px; margin-top: 4px;
+}
+.pass { background: #0a2010; color: #3a8a5a; border: 1px solid #1a4a2a; }
+.warn { background: #1a1a08; color: #8a7a3a; border: 1px solid #3a3a18; }
+.fail { background: #200a0a; color: #8a3a3a; border: 1px solid #4a1a1a; }
+
+/* ── BROWSER TAB SIM ── */
+.browser {
+  position: relative; z-index: 1;
+  margin: 20px 52px 0;
+  border: 1px solid #0d1e3a;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.browser-chrome {
+  background: #040c1a;
+  padding: 10px 12px 0;
+  display: flex; gap: 2px; align-items: flex-end;
+  border-bottom: 1px solid #0d1e3a;
+}
+.b-tab {
+  display: flex; align-items: center; gap: 7px;
+  padding: 6px 16px 7px;
+  border-radius: 6px 6px 0 0;
+  font-size: 10px; letter-spacing: 0.04em;
+  color: #2a3d60; white-space: nowrap;
+  border: 1px solid transparent;
+  border-bottom: none;
+}
+.b-tab.active {
+  background: #070e1c;
+  color: #7a9acc;
+  border-color: #0d1e3a;
+}
+.b-tab.other { background: #030810; color: #1a2a44; }
+.b-fav { width: 14px; height: 14px; flex-shrink: 0; display:flex; align-items:center; justify-content:center; }
+.b-spacer { flex: 1; }
+.browser-body {
+  background: #070e1c;
+  padding: 20px 28px;
+  font-size: 9px; letter-spacing: 0.18em; color: #1a2e50;
+  text-transform: uppercase;
+}
+
+/* ── DEFINITION BOX ── */
+.definition {
+  position: relative; z-index: 1;
+  margin: 20px 52px 0;
+  border: 1px solid #0d1e3a;
+  border-radius: 2px;
+  background: #040b18;
+  padding: 28px 36px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+}
+.def-col { display: flex; flex-direction: column; gap: 10px; }
+.def-head { font-size: 8.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #3a5888; }
+.def-body { font-size: 8px; letter-spacing: 0.1em; color: #2a4060; line-height: 1.9; }
+.def-body strong { color: #3a5888; font-weight: 400; }
+
+/* anim */
+@keyframes up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card { animation: up 0.4s ease both; }
+.card:nth-child(1) { animation-delay: 0.03s; }
+.card:nth-child(2) { animation-delay: 0.08s; }
+.card:nth-child(3) { animation-delay: 0.13s; }
+.card:nth-child(4) { animation-delay: 0.18s; }
+.card:nth-child(5) { animation-delay: 0.23s; }
+.card:nth-child(6) { animation-delay: 0.28s; }
+.card:nth-child(7) { animation-delay: 0.33s; }
+.card:nth-child(8) { animation-delay: 0.38s; }
+.card:nth-child(9) { animation-delay: 0.43s; }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="mh-l">ActaClara — A8 Chevron · Design Mark Exploration</div>
+  <div class="mh-r">Attorney review package · draft</div>
+</div>
+
+<div class="notice">
+  <div class="notice-label">For counsel</div>
+  <div class="notice-text">
+    Design mark candidate for <strong>ActaClara</strong> — influence intelligence platform.
+    Filing classes under consideration: <strong>Class 35</strong> (business intelligence, data analysis),
+    <strong>Class 36</strong> (financial intelligence services), <strong>Class 42</strong> (software as a service, data platform).
+    Mark configuration: <strong>two concentric open chevrons, upward-pointing, no shaft, no container,
+    outer chevron full weight, inner chevron reduced weight</strong>. Custom geometry, no Unicode basis.
+    Requesting design mark clearance search and likelihood-of-confusion opinion prior to filing.
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════
+     CH I — MARK DEFINITION
+══════════════════════════════ -->
+<div class="chapter">
+  <div class="ch-name">I — Mark Definition</div>
+  <div class="ch-sub">Canonical geometry · the specific configuration being considered for filing</div>
+</div>
+
+<!-- HERO — canonical mark at large scale -->
+<div class="grid g2">
+
+  <div class="card hero">
+    <span class="card-tag">★ Canonical mark · dark ground</span>
+    <div class="card-inner col" style="min-height: 400px; gap: 32px;">
+      <svg viewBox="0 0 80 64" fill="none" width="160" height="128">
+        <!-- outer chevron — full weight -->
+        <path d="M4 58 L40 6 L76 58"
+              stroke="#2c5fcc" stroke-width="3"
+              stroke-linejoin="round" stroke-linecap="round"
+              fill="none"/>
+        <!-- inner chevron — reduced weight, reduced opacity -->
+        <path d="M16 58 L40 18 L64 58"
+              stroke="#2c5fcc" stroke-width="1.6"
+              stroke-linejoin="round" stroke-linecap="round"
+              fill="none" opacity="0.38"/>
+      </svg>
+      <div style="text-align:center;" class="lg">
+        <div class="wm-main">Acta<em>Clara</em></div>
+        </div>
+    </div>
+  </div>
+
+  <div class="card hero light">
+    <span class="card-tag">★ Canonical mark · light ground</span>
+    <div class="card-inner col" style="min-height: 400px; gap: 32px;">
+      <svg viewBox="0 0 80 64" fill="none" width="160" height="128">
+        <path d="M4 58 L40 6 L76 58"
+              stroke="#2c5fcc" stroke-width="3"
+              stroke-linejoin="round" stroke-linecap="round"
+              fill="none"/>
+        <path d="M16 58 L40 18 L64 58"
+              stroke="#2c5fcc" stroke-width="1.6"
+              stroke-linejoin="round" stroke-linecap="round"
+              fill="none" opacity="0.3"/>
+      </svg>
+      <div style="text-align:center;" class="lg">
+        <div class="wm-main">Acta<em>Clara</em></div>
+        </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- mark anatomy -->
+<div class="definition">
+  <div class="def-col">
+    <div class="def-head">Outer chevron</div>
+    <div class="def-body">
+      Open upward-pointing chevron. <strong>No fill. No shaft. No container.</strong>
+      Stroke weight: 3pt at canonical size (80×64 viewBox).
+      Apex at top center. Base endpoints equidistant from center axis.
+      Round joins and caps throughout.
+    </div>
+  </div>
+  <div class="def-col">
+    <div class="def-head">Inner chevron</div>
+    <div class="def-body">
+      Concentric inner chevron, same apex point as outer.
+      <strong>Stroke weight: ~53% of outer. Opacity: ~38% of outer.</strong>
+      Creates depth and signal-emergence effect without additional color.
+      The weight+opacity differential is the ownable element.
+    </div>
+  </div>
+  <div class="def-col">
+    <div class="def-head">What it is not</div>
+    <div class="def-body">
+      Not a military chevron (those are filled, inverted, or enclosed).
+      Not a caret (^) — different proportions and stroke treatment.
+      Not a circumflex — different context and geometry.
+      <strong>No prior form in Unicode or common typographic usage
+      matches this specific two-weight nested configuration.</strong>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════
+     CH II — PROPORTION VARIANTS
+══════════════════════════════ -->
+<div class="chapter" style="margin-top: 48px;">
+  <div class="ch-name">II — Proportion Variants</div>
+  <div class="ch-sub">Apex angle · inner spacing · stroke weight ratio · echo opacity</div>
+</div>
+
+<div class="grid g4">
+
+  <!-- Narrow apex — tall, pointed -->
+  <div class="card">
+    <span class="card-tag">Narrow apex · tall</span>
+    <div class="card-inner col">
+      <svg viewBox="0 0 60 72" fill="none" width="90" height="108">
+        <path d="M4 66 L30 6 L56 66" stroke="#2c5fcc" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+        <path d="M13 66 L30 18 L47 66" stroke="#2c5fcc" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.38"/>
+      </svg>
+      <div style="text-align:center;" class="sm">
+        <div class="wm-main">Acta<em>Clara</em></div>
+        </div>
+    </div>
+    <div class="card-note">~40° apex. More arrow-like, more urgency. Strong at small sizes — narrow profile survives favicon compression.</div>
+  </div>
+
+  <!-- Canonical — 50° -->
+  <div class="card hero">
+    <span class="card-tag">★ Canonical · ~52° apex</span>
+    <div class="card-inner col">
+      <svg viewBox="0 0 80 64" fill="none" width="110" height="88">
+        <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+        <path d="M16 58 L40 18 L64 58" stroke="#2c5fcc" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.38"/>
+      </svg>
+      <div style="text-align:center;" class="sm">
+        <div class="wm-main">Acta<em>Clara</em></div>
+        </div>
+    </div>
+    <div class="card-note">Balanced proportion. Wide enough to read as a mark, pointed enough to read as directional. Best all-round.</div>
+  </div>
+
+  <!-- Wide apex — shallow, broad -->
+  <div class="card">
+    <span class="card-tag">Wide apex · shallow</span>
+    <div class="card-inner col">
+      <svg viewBox="0 0 100 52" fill="none" width="120" height="62">
+        <path d="M4 46 L50 6 L96 46" stroke="#2c5fcc" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+        <path d="M20 46 L50 16 L80 46" stroke="#2c5fcc" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.38"/>
+      </svg>
+      <div style="text-align:center;" class="sm">
+        <div class="wm-main">Acta<em>Clara</em></div>
+        </div>
+    </div>
+    <div class="card-note">~70° apex. More like a rooftop or mountain. Less directional urgency, more architectural. Loses distinctiveness at small sizes.</div>
+  </div>
+
+  <!-- Tight inner spacing -->
+  <div class="card">
+    <span class="card-tag">Tight inner · close echo</span>
+    <div class="card-inner col">
+      <svg viewBox="0 0 80 64" fill="none" width="110" height="88">
+        <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+        <!-- inner chevron much closer to outer -->
+        <path d="M11 58 L40 14 L69 58" stroke="#2c5fcc" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.38"/>
+      </svg>
+      <div style="text-align:center;" class="sm">
+        <div class="wm-main">Acta<em>Clara</em></div>
+        </div>
+    </div>
+    <div class="card-note">Inner echo hugs the outer. Reads as a single thick stroke with a shadow. Less distinct as two separate marks — weaker for trademark.</div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════
+     CH III — ECHO CONFIGURATIONS
+══════════════════════════════ -->
+<div class="chapter" style="margin-top: 48px;">
+  <div class="ch-name">III — Echo Configurations</div>
+  <div class="ch-sub">How the inner chevron behaves · the ownable element</div>
+</div>
+
+<div class="grid g4">
+
+  <!-- Single — no echo, for comparison -->
+  <div class="card">
+    <span class="card-tag">No echo · single</span>
+    <div class="card-inner col">
+      <svg viewBox="0 0 80 64" fill="none" width="100" height="80">
+        <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div style="text-align:center;" class="sm">
+        <div class="wm-main">Acta<em>Clara</em></div>
+        </div>
+    </div>
+    <div class="card-note">No echo. Clean but generic — single open chevrons are everywhere. Weak trademark position on its own.</div>
+  </div>
+
+  <!-- Same weight echo — double stroke -->
+  <div class="card">
+    <span class="card-tag">Equal weight echo</span>
+    <div class="card-inner col">
+      <svg viewBox="0 0 80 64" fill="none" width="100" height="80">
+        <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+        <path d="M16 58 L40 18 L64 58" stroke="#2c5fcc" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.38"/>
+      </svg>
+      <div style="text-align:center;" class="sm">
+        <div class="wm-main">Acta<em>Clara</em></div>
+        </div>
+    </div>
+    <div class="card-note">Same stroke weight, reduced opacity. Reads as a ghost double. Less hierarchy — outer and inner compete.</div>
+  </div>
+
+  <!-- Canonical — weight+opacity differential -->
+  <div class="card hero">
+    <span class="card-tag">★ Weight + opacity differential</span>
+    <div class="card-inner col">
+      <svg viewBox="0 0 80 64" fill="none" width="100" height="80">
+        <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+        <path d="M16 58 L40 18 L64 58" stroke="#2c5fcc" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.38"/>
+      </svg>
+      <div style="text-align:center;" class="sm">
+        <div class="wm-main">Acta<em>Clara</em></div>
+        </div>
+    </div>
+    <div class="card-note">★ Canonical. Outer bold, inner light. Clear hierarchy — signal from noise. The combination of weight AND opacity is the ownable element.</div>
+  </div>
+
+  <!-- Triple echo -->
+  <div class="card">
+    <span class="card-tag">Triple echo</span>
+    <div class="card-inner col">
+      <svg viewBox="0 0 80 64" fill="none" width="100" height="80">
+        <path d="M4 58 L40 6 L76 58"  stroke="#2c5fcc" stroke-width="3"   stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+        <path d="M16 58 L40 18 L64 58" stroke="#2c5fcc" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.42"/>
+        <path d="M26 58 L40 28 L54 58" stroke="#2c5fcc" stroke-width="1"   stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.18"/>
+      </svg>
+      <div style="text-align:center;" class="sm">
+        <div class="wm-main">Acta<em>Clara</em></div>
+        </div>
+    </div>
+    <div class="card-note">Three echoes — strongest signal-fade concept. Visually rich but complex at small sizes. Stronger trademark position than double.</div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════
+     CH IV — FULL LOCKUPS
+══════════════════════════════ -->
+<div class="chapter" style="margin-top: 48px;">
+  <div class="ch-name">IV — Full Lockups</div>
+  <div class="ch-sub">Stacked · horizontal · dark · light · all use cases</div>
+</div>
+
+<div class="grid g3">
+
+  <!-- Stacked dark -->
+  <div class="card hero">
+    <span class="card-tag">Stacked · dark · primary</span>
+    <div class="card-inner col" style="min-height: 380px; gap: 30px;">
+      <svg viewBox="0 0 80 64" fill="none" width="130" height="104">
+        <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+        <path d="M16 58 L40 18 L64 58" stroke="#2c5fcc" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.38"/>
+      </svg>
+      <div style="text-align:center;" class="lg">
+        <div class="wm-main">Acta<em>Clara</em></div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Stacked light -->
+  <div class="card light">
+    <span class="card-tag">Stacked · light · primary</span>
+    <div class="card-inner col" style="min-height: 380px; gap: 30px;">
+      <svg viewBox="0 0 80 64" fill="none" width="130" height="104">
+        <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+        <path d="M16 58 L40 18 L64 58" stroke="#2c5fcc" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.28"/>
+      </svg>
+      <div style="text-align:center;" class="lg">
+        <div class="wm-main">Acta<em>Clara</em></div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Reversed — white on dark for dark backgrounds -->
+  <div class="card" style="background:#040b18;">
+    <span class="card-tag">Reversed · white on deep navy</span>
+    <div class="card-inner col" style="min-height: 380px; gap: 30px;">
+      <svg viewBox="0 0 80 64" fill="none" width="130" height="104">
+        <path d="M4 58 L40 6 L76 58" stroke="#e2ecff" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+        <path d="M16 58 L40 18 L64 58" stroke="#e2ecff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.32"/>
+      </svg>
+      <div style="text-align:center;" class="lg">
+        <div class="wm-main" style="color:#e2ecff;">Acta<em style="color:#c2d4f0;">Clara</em></div>
+        </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Horizontal lockups -->
+<div class="grid g2" style="margin-top:16px;">
+
+  <div class="card hero">
+    <span class="card-tag">Horizontal · dark · nav use</span>
+    <div class="card-inner row" style="justify-content:center; min-height:180px;">
+      <svg viewBox="0 0 80 64" fill="none" width="70" height="56" style="flex-shrink:0;">
+        <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+        <path d="M16 58 L40 18 L64 58" stroke="#2c5fcc" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.38"/>
+      </svg>
+      <div>
+        <div class="wm-main">Acta<em>Clara</em></div>
+        </div>
+    </div>
+  </div>
+
+  <div class="card light">
+    <span class="card-tag">Horizontal · light · nav use</span>
+    <div class="card-inner row" style="justify-content:center; min-height:180px;">
+      <svg viewBox="0 0 80 64" fill="none" width="70" height="56" style="flex-shrink:0;">
+        <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+        <path d="M16 58 L40 18 L64 58" stroke="#2c5fcc" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.28"/>
+      </svg>
+      <div>
+        <div class="wm-main">Acta<em>Clara</em></div>
+        </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════
+     CH V — FAVICON STRESS TEST
+══════════════════════════════ -->
+<div class="chapter" style="margin-top: 48px;">
+  <div class="ch-name">V — Favicon Stress Test</div>
+  <div class="ch-sub">Simulated rendering at 180px · 96px · 64px · 32px · 16px</div>
+</div>
+
+<div class="size-strip">
+
+  <div class="sz">
+    <svg viewBox="0 0 80 64" fill="none" width="180" height="144">
+      <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+      <path d="M16 58 L40 18 L64 58" stroke="#2c5fcc" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.38"/>
+    </svg>
+    <div class="sz-label">180 · iOS icon</div>
+    <div class="sz-note">Full detail. Both chevrons crisp. Weight differential fully legible.</div>
+    <div class="sz-verdict pass">Pass</div>
+  </div>
+
+  <div class="sz">
+    <svg viewBox="0 0 80 64" fill="none" width="96" height="76">
+      <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+      <path d="M16 58 L40 18 L64 58" stroke="#2c5fcc" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.38"/>
+    </svg>
+    <div class="sz-label">96 · App icon</div>
+    <div class="sz-note">Both chevrons legible. Echo reads as depth not noise.</div>
+    <div class="sz-verdict pass">Pass</div>
+  </div>
+
+  <div class="sz">
+    <svg viewBox="0 0 80 64" fill="none" width="64" height="51">
+      <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+      <path d="M16 58 L40 18 L64 58" stroke="#2c5fcc" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.4"/>
+    </svg>
+    <div class="sz-label">64 · Retina tab</div>
+    <div class="sz-note">Still readable. Stroke weights bumped slightly for this size.</div>
+    <div class="sz-verdict pass">Pass</div>
+  </div>
+
+  <div class="sz">
+    <svg viewBox="0 0 80 64" fill="none" width="32" height="26">
+      <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+      <path d="M16 58 L40 18 L64 58" stroke="#2c5fcc" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.4"/>
+    </svg>
+    <div class="sz-label">32 · Standard tab</div>
+    <div class="sz-note">Echo begins to merge with outer. Still two marks visible. Stroke weights increased.</div>
+    <div class="sz-verdict warn">Marginal</div>
+  </div>
+
+  <div class="sz">
+    <svg viewBox="0 0 80 64" fill="none" width="16" height="13">
+      <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+      <path d="M16 58 L40 18 L64 58" stroke="#2c5fcc" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.35"/>
+    </svg>
+    <div class="sz-label">16 · Favicon</div>
+    <div class="sz-note">Two chevrons merge into one thick form. Reads as single bold chevron — still recognizable, not noise.</div>
+    <div class="sz-verdict warn">Acceptable</div>
+  </div>
+
+</div>
+
+<!-- Browser tab simulation -->
+<div class="chapter" style="margin-top: 48px;">
+  <div class="ch-name">VI — Browser Tab Simulation</div>
+  <div class="ch-sub">How the mark reads in context · alongside competitor tabs</div>
+</div>
+
+<div class="browser">
+  <div class="browser-chrome">
+    <!-- ActaClara tab — active -->
+    <div class="b-tab active">
+      <div class="b-fav">
+        <svg viewBox="0 0 80 64" fill="none" width="14" height="11">
+          <path d="M4 58 L40 6 L76 58" stroke="#2c5fcc" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+          <path d="M16 58 L40 18 L64 58" stroke="#2c5fcc" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.4"/>
+        </svg>
+      </div>
+      ActaClara · Dashboard
+    </div>
+    <!-- Palantir-style tab -->
+    <div class="b-tab other">
+      <div class="b-fav" style="background:#111; border-radius:2px; width:12px; height:12px;"></div>
+      Palantir Foundry
+    </div>
+    <!-- Bloomberg-style tab -->
+    <div class="b-tab other">
+      <div class="b-fav" style="font-size:10px; color:#f60; font-weight:700; font-family:sans-serif;">B</div>
+      Bloomberg Terminal
+    </div>
+    <!-- Generic tab -->
+    <div class="b-tab other">
+      <div class="b-fav" style="background:#0052cc; border-radius:2px; width:12px; height:12px;"></div>
+      Jira — Issues
+    </div>
+    <div class="b-spacer"></div>
+  </div>
+  <div class="browser-body">
+    ActaClara · Influence Intelligence Platform · Dashboard loading…
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════
+     CH VII — TRADEMARK SUMMARY
+══════════════════════════════ -->
+<div class="chapter" style="margin-top: 48px;">
+  <div class="ch-name">VII — Trademark Summary for Counsel</div>
+  <div class="ch-sub">Mark description · distinguishing features · filing recommendation</div>
+</div>
+
+<div class="definition" style="grid-template-columns: 1fr 1fr 1fr;">
+  <div class="def-col">
+    <div class="def-head">Mark description (USPTO)</div>
+    <div class="def-body">
+      The mark consists of <strong>two concentric open upward-pointing chevrons</strong>,
+      no fill, no enclosing container, no shaft.
+      The outer chevron is rendered at full stroke weight.
+      The inner chevron is rendered at approximately <strong>50% stroke weight
+      and 38% opacity</strong> of the outer, creating a visual hierarchy
+      of signal over echo. Round stroke joins and terminals throughout.
+      All geometry is custom — no Unicode or standard typographic basis.
+    </div>
+  </div>
+  <div class="def-col">
+    <div class="def-head">Distinguishing features</div>
+    <div class="def-body">
+      (1) <strong>Two-chevron nested configuration</strong> — not one.
+      (2) <strong>Differential weight + opacity</strong> between outer and inner —
+      the combination of both variables is the ownable element.
+      (3) <strong>Absence of shaft, container, or fill</strong> — distinguishes from
+      arrow marks, military chevrons, and caret symbols.
+      (4) Proportions: canonical apex ~52°, inner chevron inset
+      approximately 30% from outer base endpoints.
+    </div>
+  </div>
+  <div class="def-col">
+    <div class="def-head">Recommended filing</div>
+    <div class="def-body">
+      <strong>Design mark</strong> — standard character mark separately for wordmark "ACTACLARA."
+      Priority classes: <strong>42</strong> (data intelligence software, SaaS),
+      <strong>35</strong> (business intelligence, research services),
+      <strong>36</strong> (financial analysis and intelligence services).
+      Request design search in all three classes before filing.
+      Particular attention to Class 35 — highest density of existing
+      chevron-adjacent marks in intelligence/analytics space.
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
